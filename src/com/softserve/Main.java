@@ -9,10 +9,11 @@ public class Main {
         ArrayList<AtmNetwork> atmNetworks = new ArrayList<AtmNetwork>(5); // 5 will be enough
 
         atmNetworks.add(new AtmNetwork("ПриватБанк", new PrivatBanksListCreator("https://privatbank.ua/")));
-        atmNetworks.add(new AtmNetwork("АТМоСфера", new AtmosferaBanksListCreator("http://www.atmosphere.net.ua/ru/members_atmoshera_rus.htm?print&showAll=1")));
-        atmNetworks.add(new AtmNetwork("Euronet", new UbanksComUaBanksListCreator("http://ubanks.com.ua/atmnet/euronet.php")));
-        atmNetworks.add(new AtmNetwork("Радіус", new UbanksComUaBanksListCreator("http://ubanks.com.ua/atmnet/radius.php")));
-        atmNetworks.add(new AtmNetwork("УкрКард", new UbanksComUaBanksListCreator("http://ubanks.com.ua/atmnet/ukrcard.php")));
+        atmNetworks.add(new AtmNetwork("АТМоСфера", new AtmosferaListCreator("http://www.atmosphere.net.ua/ru/members_atmoshera_rus.htm?print&showAll=1","td.tab_line_mini")));
+        atmNetworks.add(new AtmNetwork("Euronet", new UbanksComListCreator("http://ubanks.com.ua/atmnet/euronet.php","#zmist li")));
+        atmNetworks.add(new AtmNetwork("Радіус", new UbanksComListCreator("http://ubanks.com.ua/atmnet/radius.php","#zmist li")));
+        atmNetworks.add(new AtmNetwork("УкрКард", new UbanksComListCreator("http://ubanks.com.ua/atmnet/ukrcard.php","#zmist li")));
+
 
         for(AtmNetwork network : atmNetworks){
             printAtmNetwork(network);

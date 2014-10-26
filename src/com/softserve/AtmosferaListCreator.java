@@ -15,7 +15,7 @@ public class AtmosferaListCreator extends BanksListCreator {
     public BankEntry getBank(Element element) {
         Element  tmp = element.nextElementSibling();
         String   bankName = element.text();
-        String   bankUrl = tmp.child(0).attr("href");
+        String   bankUrl = tmp.child(0).absUrl("href");
         //  System.out.println(bankName);
         //  System.out.println(url);
         return new BankEntry(bankName,bankUrl);

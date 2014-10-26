@@ -21,7 +21,7 @@ public abstract class BanksListCreator implements IBanksListCreator {
         this.listSelector = listSelector;
     }
 
-    public abstract BankEntry getBank(Element element);
+    protected abstract BankEntry getBank(Element element);
 
     @Override
     public List<BankEntry> createBanksList(){

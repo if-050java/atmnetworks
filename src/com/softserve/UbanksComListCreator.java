@@ -38,6 +38,8 @@ public class UbanksComListCreator extends BanksListCreator {
     }
 
     private String searchBankSite(String pageUrl) {
+        final String selector = "div.url>span.value-title"; // '>' means "sub" select
+
         String bankAddr = "";
         Document doc = null;
         try {
@@ -47,8 +49,8 @@ public class UbanksComListCreator extends BanksListCreator {
         } catch (IOException e) {
             return bankAddr;
         }
-        Elements elements = doc.select("div.url>span.value-title"); // '>' means "sub" select
-        bankAddr = elements.get(0).child(0).attr("href");
+        Elements elements = doc.select(selector);
+        bankAddr = elements.get(0).child(0).absUrl("href");
         return bankAddr;
     }
 

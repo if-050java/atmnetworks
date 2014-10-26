@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="privat" class="com.softserve.PrivatBanksListCreator">
+        <constructor-arg value="https://privatbank.ua/"/>
+        <constructor-arg value=""/>
+    </bean>
+    <bean id="atmosfera" class="com.softserve.AtmosferaListCreator">
+        <constructor-arg value="http://www.atmosphere.net.ua/ru/members_atmoshera_rus.htm?print&amp;showAll=1"/>
+        <constructor-arg value="td.tab_line_mini"/>
+    </bean>
+    <bean id="euronet" class="com.softserve.UbanksComListCreator">
+        <constructor-arg value="http://ubanks.com.ua/atmnet/euronet.php"/>
+        <constructor-arg value="#zmist li"/>
+    </bean>
+    <bean id="radius"  class="com.softserve.UbanksComListCreator">
+        <constructor-arg value="http://ubanks.com.ua/atmnet/radius.php" />
+        <constructor-arg value="#zmist li"/>
+    </bean>
+    <bean id="ukrcard" class="com.softserve.UbanksComListCreator">
+        <constructor-arg value="http://ubanks.com.ua/atmnet/ukrcard.php"/>
+        <constructor-arg value="#zmist li"/>
+    </bean>
+
+    <bean id="privat_net" class="com.softserve.AtmNetwork">
+        <constructor-arg value="ПриватБанк"/>
+        <constructor-arg ref="privat" />
+    </bean>
+
+    <bean id="atmosfera_net" class="com.softserve.AtmNetwork">
+        <constructor-arg value="АТМоСфера"/>
+        <constructor-arg ref="atmosfera" />
+    </bean>
+
+    <bean id="euronet_net" class="com.softserve.AtmNetwork">
+        <constructor-arg value="Euronet"/>
+        <constructor-arg ref="euronet" />
+    </bean>
+
+    <bean id="radius_net" class="com.softserve.AtmNetwork">
+        <constructor-arg value="Радіус"/>
+        <constructor-arg ref="radius" />
+    </bean>
+
+    <bean id="ukrcard_net" class="com.softserve.AtmNetwork">
+        <constructor-arg value="УкрКард"/>
+        <constructor-arg ref="ukrcard" />
+    </bean>
+
+
+    <bean id="atm_networks_list" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <ref bean="privat_net"/>
+                <ref bean="atmosfera_net"/>
+                <ref bean="euronet_net"/>
+                <ref bean="radius_net"/>
+                <ref bean="ukrcard_net"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

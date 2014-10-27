@@ -3,13 +3,14 @@ package com.softserve;
 /**
  * Created by Olavin on 27.10.2014.
  */
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.List;
 
 public class MainSpring {
-    public static void main(String[] args) {
+    private static void main(String[] args) {
 
+/*
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 
         Object bean = context.getBean("atm_networks_list");
@@ -22,6 +23,7 @@ public class MainSpring {
 
             AtmNetworksXML.createXML(atmNetworks, "out/atm_networks.xml");
         }
+*/
 
     }
 
